@@ -38,7 +38,8 @@ primeval_forest = Map.create(name: primeval_forest)
 wychwood = Map.create(name: wychwood)
 aokigahara = Map.create(name: aokigahara)
 
-cupid = UserCharacter.create(user: jasper, character: spearman, name: "Cupid", gold: 1000, level: 1, experience: 0, stats: spearman.base_stats)
+cupidStats = spearman.base_stats.merge!(current_hp: spearman.base_stats[:hp]).merge!(current_mp: spearman.base_stats[:mp])
+cupid = UserCharacter.create(user: jasper, character: spearman, name: "Cupid", gold: 1000, level: 1, experience: 0, stats: cupidStats)
 
 vang_satyr = Monster.create(name: "vang_satyr", base_stats: {hp: 25, mp: 25, str: 10, dex: 10, int: 10, cri: 2,spd: 10, def: 10}, level_range: "1-5", base_gold: 10, base_exp: 10, map: primeval_forest)
 
