@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_06_30_170136) do
   create_table "items", force: :cascade do |t|
     t.text "name"
     t.text "description"
-    t.text "effect"
+    t.json "effect"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_06_30_170136) do
   create_table "skills", force: :cascade do |t|
     t.text "name"
     t.text "description"
-    t.text "effect"
+    t.json "effect"
     t.bigint "character_id", null: false
     t.integer "level"
     t.datetime "created_at", precision: 6, null: false
