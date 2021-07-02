@@ -4,8 +4,8 @@ class CreateSkills < ActiveRecord::Migration[6.1]
       t.text :name
       t.text :description
       t.json :effect
-      t.references :character, null: false, foreign_key: true
       t.integer :level
+      t.references :character, null: false, foreign_key: true
 
       t.timestamps
     end
