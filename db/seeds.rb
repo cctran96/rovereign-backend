@@ -15,11 +15,11 @@ puts "creating seeds..."
 
 jasper = User.create(username: "jasper20", password: "password", bio: "Taste my cupid shuffle!")
 
-spearman = Character.create(role: "spearman", base_stats: {hp: 100, mp: 50, str: 100, dex: 25, int: 25, cri: 1,spd: 25, def: 25})
-crusader = Character.create(role: "crusader", base_stats: {hp: 500, mp: 250, str: 500, dex: 125, int: 125, cri: 10, spd: 125, def: 125})
-hero = Character.create(role: "hero", base_stats: {hp: 1000, mp: 500, str: 1000, dex: 250, int: 250, cri: 20,spd: 250, def: 250})
-wizard = Character.create(role: "wizard", base_stats: {hp: 100, mp: 100, str: 0, dex: 0, int: 100, cri: 5,spd: 25, def: 25})
-archer = Character.create(role: "archer", base_stats: {hp: 100, mp: 50, str: 25, dex: 100, int: 25, cri: 5,spd: 25, def: 25})
+spearman = Character.create(role: "spearman", base_stats: {hp: 50, mp: 25, str: 50, dex: 25, int: 0, cri: 1,spd: 25, def: 25})
+wizard = Character.create(role: "wizard", base_stats: {hp: 50, mp: 50, str: 0, dex: 0, int: 50, cri: 1,spd: 25, def: 25})
+archer = Character.create(role: "archer", base_stats: {hp: 50, mp: 25, str: 0, dex: 50, int: 25, cri: 1,spd: 25, def: 25})
+# crusader = Character.create(role: "crusader", base_stats: {hp: 500, mp: 250, str: 500, dex: 125, int: 125, cri: 10, spd: 125, def: 125})
+# hero = Character.create(role: "hero", base_stats: {hp: 1000, mp: 500, str: 1000, dex: 250, int: 250, cri: 20,spd: 250, def: 250})
 
 arctic_forest = Map.create(name: arctic_forest)
 chionidis = Map.create(name: chionidis)
@@ -41,7 +41,9 @@ aokigahara = Map.create(name: aokigahara)
 cupidStats = spearman.base_stats.merge!(current_hp: spearman.base_stats[:hp]).merge!(current_mp: spearman.base_stats[:mp])
 cupid = UserCharacter.create(user: jasper, character: spearman, name: "Cupid", gold: 1000, level: 1, experience: 0, stats: cupidStats)
 
-vang_satyr = Monster.create(name: "vang_satyr", base_stats: {hp: 25, mp: 25, str: 10, dex: 10, int: 10, cri: 2,spd: 10, def: 10}, level_range: "1-5", base_gold: 10, base_exp: 10, map: primeval_forest)
+vang_satyr = Monster.create(name: "vang_satyr", base_stats: {hp: 10, mp: 0, str: 10, dex: 10, int: 10, cri: 2, spd: 10, def: 10}, level_range: "1-2", base_gold: 10, base_exp: 10, map: primeval_forest)
+vang_satyr2 = Monster.create(name: "vang_satyr", base_stats: {hp: 10, mp: 0, str: 10, dex: 10, int: 10, cri: 2, spd: 10, def: 10}, level_range: "2-3", base_gold: 10, base_exp: 10, map: primeval_forest)
+vang_satyr3 = Monster.create(name: "vang_satyr", base_stats: {hp: 10, mp: 0, str: 10, dex: 10, int: 10, cri: 2, spd: 10, def: 10}, level_range: "4-5", base_gold: 10, base_exp: 10, map: primeval_forest)
 
 inventory = Inventory.create(user_character: cupid)
 
@@ -58,6 +60,8 @@ InventoryItem.create(inventory: inventory, item: magic_potion, amount: 5)
 InventoryItem.create(inventory: inventory, item: strength_potion, amount: 5)
 
 Drop.create(monster: vang_satyr, item: health_potion, amount: 1)
+Drop.create(monster: vang_satyr2, item: health_potion, amount: 3)
+Drop.create(monster: vang_satyr3, item: health_potion, amount: 5)
 
 blunt_strike = Skill.create(name: "blunt_strike", effect: {attack: {damage: 30}}, description: "Deals the enemy a dull hit.", level: 1, character: spearman)
 strength_buff = Skill.create(name: "strength_buff", effect: {buff: {str: "10%"}}, description: "Increases the player's strength by 20%", level: 2, character: spearman)
