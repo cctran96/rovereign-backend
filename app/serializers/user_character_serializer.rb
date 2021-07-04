@@ -1,6 +1,5 @@
 class UserCharacterSerializer < ActiveModel::Serializer
   attributes :id, :name, :gold, :level, :experience, :stats, :inventory, :role, :skills
-  belongs_to :user
   
   def inventory
     object.inventory_items.map{|i| InventoryItemSerializer.new(i)}
