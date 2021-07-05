@@ -1,4 +1,7 @@
 class Api::V1::UserCharactersController < ApplicationController
+
+    before_action :set_user_character, only: [:update, :destroy]
+
     def create
         character = Character.find_by(role: params[:role])
         stats = character.base_stats
@@ -10,7 +13,6 @@ class Api::V1::UserCharactersController < ApplicationController
         user_character = UserCharacter.new(data)
         if user_character.save
             inv = Inventory.create(user_character: user_character)
-            Item.first(5).each{|i| InventoryItem.create(item: i, inventory: inv, amount: 5)}
             skill = Skill.all.select{|s| s.character.role == params[:role]}.first
             UserCharacterSkill.create(user_character: user_character, skill: skill)
             render json: {character: UserCharacterSerializer.new(user_character)}, status: :accepted
@@ -19,10 +21,23 @@ class Api::V1::UserCharactersController < ApplicationController
         end
     end
 
+    def update
+        if @char.update(user_character_params)
+            render json: {character: UserCharacterSerializer.new(@char)}, status: :accepted
+        else
+            render json: {errors: @char.errors}, status: :unprocessable_entity
+        end
+    end
+
     def destroy
-        user_character = UserCharacter.find(params[:id])
-        user_character.destroy
-        render json: {character: user_character}, status: :accepted
+        @char.destroy
+        render json: {character: @char}, status: :accepted
+    end
+
+    private
+    
+    def set_user_character
+        @char = UserCharacter.find(params[:id])
     end
 
     def user_character_params

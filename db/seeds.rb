@@ -10,6 +10,7 @@ Skill.destroy_all
 Character.destroy_all
 Map.destroy_all
 User.destroy_all
+Experience.destroy_all
 
 puts "creating seeds..."
 
@@ -43,11 +44,11 @@ wychwood = Map.create(name: wychwood)
 aokigahara = Map.create(name: aokigahara)
 
 cupidStats = spearman.base_stats.merge!(current_hp: spearman.base_stats[:hp]).merge!(current_mp: spearman.base_stats[:mp])
-cupid = UserCharacter.create(user: jasper, character: spearman, name: "Cupid", gold: 1000, level: 2, experience: 0, stats: cupidStats)
+cupid = UserCharacter.create(user: jasper, character: spearman, name: "Cupid", gold: 0, level: 1, experience: 0, stats: cupidStats)
 
 vang_satyr = Monster.create(name: "vang_satyr", base_stats: {hp: 10, mp: 0, str: 10, dex: 10, int: 10, cri: 2, spd: 10, def: 10}, level_range: "1-2", base_gold: 10, base_exp: 10, map: primeval_forest)
-vang_satyr2 = Monster.create(name: "vang_satyr", base_stats: {hp: 10, mp: 0, str: 10, dex: 10, int: 10, cri: 2, spd: 10, def: 10}, level_range: "2-3", base_gold: 10, base_exp: 10, map: primeval_forest)
-vang_satyr3 = Monster.create(name: "vang_satyr", base_stats: {hp: 10, mp: 0, str: 10, dex: 10, int: 10, cri: 2, spd: 10, def: 10}, level_range: "4-5", base_gold: 10, base_exp: 10, map: primeval_forest)
+# vang_satyr2 = Monster.create(name: "vang_satyr", base_stats: {hp: 10, mp: 0, str: 10, dex: 10, int: 10, cri: 2, spd: 10, def: 10}, level_range: "2-3", base_gold: 10, base_exp: 10, map: primeval_forest)
+# vang_satyr3 = Monster.create(name: "vang_satyr", base_stats: {hp: 10, mp: 0, str: 10, dex: 10, int: 10, cri: 2, spd: 10, def: 10}, level_range: "4-5", base_gold: 10, base_exp: 10, map: primeval_forest)
 
 inventory = Inventory.create(user_character_id: cupid.id)
 
@@ -57,15 +58,15 @@ strength_potion = Item.create(name: "strength_potion", description: "A concentra
 range_potion = Item.create(name: "range_potion", description: "A concentrated potion made out of nympha berries.", effect: {increase: {dex: 10}, craft: ["5 nympha_berry"]})
 magic_potion = Item.create(name: "magic_potion", description: "A concentrated potion made out of pimple berries.", effect: {increase: {int: 10}, craft: ["5 pimple_berry"]})
 
-InventoryItem.create(inventory: inventory, item: health_potion, amount: 5)
-InventoryItem.create(inventory: inventory, item: mana_potion, amount: 5)
-InventoryItem.create(inventory: inventory, item: range_potion, amount: 5)
-InventoryItem.create(inventory: inventory, item: magic_potion, amount: 5)
-InventoryItem.create(inventory: inventory, item: strength_potion, amount: 5)
+# InventoryItem.create(inventory: inventory, item: health_potion, amount: 5)
+# InventoryItem.create(inventory: inventory, item: mana_potion, amount: 5)
+# InventoryItem.create(inventory: inventory, item: range_potion, amount: 5)
+# InventoryItem.create(inventory: inventory, item: magic_potion, amount: 5)
+# InventoryItem.create(inventory: inventory, item: strength_potion, amount: 5)
 
 Drop.create(monster: vang_satyr, item: health_potion, amount: 1)
-Drop.create(monster: vang_satyr2, item: health_potion, amount: 3)
-Drop.create(monster: vang_satyr3, item: health_potion, amount: 5)
+# Drop.create(monster: vang_satyr2, item: health_potion, amount: 3)
+# Drop.create(monster: vang_satyr3, item: health_potion, amount: 5)
 
 blunt_strike = Skill.create(name: "blunt_strike", effect: {attack: {damage: 10}}, description: "Deals the enemy a dull hit.", level: 1, character: spearman)
 strength_buff = Skill.create(name: "strength_buff", effect: {buff: {str: "10%"}}, description: "Increases the player's strength by 10%.", level: 2, character: spearman)
@@ -116,6 +117,36 @@ holy_shot = Skill.create(name: "holy_shot", effect: {attack: {damage: 20}}, desc
 # mortal_blow = Skill.create(name: "mortal_blow", effect: , description: , level: 30, character: hunter)
 
 UserCharacterSkill.create(user_character: cupid, skill: blunt_strike)
-UserCharacterSkill.create(user_character: cupid, skill: strength_buff)
+
+Experience.create(level: 1, exp: 0)
+Experience.create(level: 2, exp: 83)
+Experience.create(level: 3, exp: 174)
+Experience.create(level: 4, exp: 276)
+Experience.create(level: 5, exp: 388)
+Experience.create(level: 6, exp: 512)
+Experience.create(level: 7, exp: 650)
+Experience.create(level: 8, exp: 801)
+Experience.create(level: 9, exp: 969)
+Experience.create(level: 10, exp: 1154)
+Experience.create(level: 11, exp: 1358)
+Experience.create(level: 12, exp: 1584)
+Experience.create(level: 13, exp: 1833)
+Experience.create(level: 14, exp: 2107)
+Experience.create(level: 15, exp: 2411)
+Experience.create(level: 16, exp: 2746)
+Experience.create(level: 17, exp: 3115)
+Experience.create(level: 18, exp: 3523)
+Experience.create(level: 19, exp: 3973)
+Experience.create(level: 20, exp: 4470)
+Experience.create(level: 21, exp: 5018)
+Experience.create(level: 22, exp: 5624)
+Experience.create(level: 23, exp: 6291)
+Experience.create(level: 24, exp: 7028)
+Experience.create(level: 25, exp: 7842)
+Experience.create(level: 26, exp: 8740)
+Experience.create(level: 27, exp: 9730)
+Experience.create(level: 28, exp: 10824)
+Experience.create(level: 29, exp: 12031)
+Experience.create(level: 30, exp: 13363)
 
 puts "seeding done"
