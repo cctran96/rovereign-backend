@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users, only: [:create, :update]
-      resources :characters, only: [:index, :show]
-      resources :items, only: [:index, :show]
-      resources :skills, only: [:index, :show]
+      resources :characters, only: [:index]
+      resources :items, only: [:index]
+      resources :skills, only: [:index]
       resources :user_characters, only: [:create, :update, :destroy]
       resources :inventory_items, only: [:create, :destroy]
       resources :user_character_skills, only: [:create, :destroy]
