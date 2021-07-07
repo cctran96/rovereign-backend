@@ -23,7 +23,9 @@ class Api::V1::UserCharactersController < ApplicationController
 
     def update
         if @char.update(user_character_params)
-            render json: {character: UserCharacterSerializer.new(@char)}, status: :accepted
+            hash = {}
+            user_character_params.keys.each {|key| hash[key] = @char[key]}
+            render json: {updates: hash}, status: :accepted
         else
             render json: {errors: @char.errors}, status: :unprocessable_entity
         end
