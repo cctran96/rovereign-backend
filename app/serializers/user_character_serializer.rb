@@ -2,7 +2,7 @@ class UserCharacterSerializer < ActiveModel::Serializer
   attributes :id, :name, :gold, :level, :experience, :stats, :inventory, :role, :skills
   
   def inventory
-    object.inventory_items.map{|i| InventoryItemSerializer.new(i)}
+    object.inventory_items.map{|i| {id: i.id, amount: i.amount, item: i.item.name}}
   end
 
   def role
@@ -10,6 +10,6 @@ class UserCharacterSerializer < ActiveModel::Serializer
   end
 
   def skills
-    object.skills.map{|s| SkillSerializer.new(s)}
+    object.skills.map{|s| s.name}
   end
 end
