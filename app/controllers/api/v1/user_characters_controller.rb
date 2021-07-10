@@ -43,6 +43,6 @@ class Api::V1::UserCharactersController < ApplicationController
     end
 
     def user_character_params
-        params.permit(:user_id, :name, :gold, :level, :experience)
+        params.permit(:user_id, :name, :gold, :level, :experience, stats: {})
     end
 end
