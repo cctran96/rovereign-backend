@@ -73,9 +73,8 @@ ActiveRecord::Schema.define(version: 2021_07_05_055505) do
   create_table "monsters", force: :cascade do |t|
     t.text "name"
     t.json "base_stats"
-    t.text "level_range"
-    t.text "base_exp"
-    t.text "base_gold"
+    t.integer "base_exp"
+    t.integer "base_gold"
     t.bigint "map_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -91,15 +90,6 @@ ActiveRecord::Schema.define(version: 2021_07_05_055505) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["character_id"], name: "index_skills_on_character_id"
-  end
-
-  create_table "user_character_skills", force: :cascade do |t|
-    t.bigint "user_character_id", null: false
-    t.bigint "skill_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["skill_id"], name: "index_user_character_skills_on_skill_id"
-    t.index ["user_character_id"], name: "index_user_character_skills_on_user_character_id"
   end
 
   create_table "user_characters", force: :cascade do |t|
@@ -131,8 +121,6 @@ ActiveRecord::Schema.define(version: 2021_07_05_055505) do
   add_foreign_key "inventory_items", "items"
   add_foreign_key "monsters", "maps"
   add_foreign_key "skills", "characters"
-  add_foreign_key "user_character_skills", "skills"
-  add_foreign_key "user_character_skills", "user_characters"
   add_foreign_key "user_characters", "characters"
   add_foreign_key "user_characters", "users"
 end

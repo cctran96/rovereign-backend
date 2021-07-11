@@ -8,7 +8,6 @@ Rails.application.routes.draw do
       resources :skills, only: [:index]
       resources :user_characters, only: [:create, :update, :destroy]
       resources :inventory_items, only: [:create, :destroy]
-      resources :user_character_skills, only: [:create, :destroy]
       resources :maps
       resources :monsters, only: [:index]
       resources :drops
