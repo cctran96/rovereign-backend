@@ -16,8 +16,8 @@ puts "creating seeds..."
 jasper = User.create(username: "jasper20", password: "password", bio: "Taste my cupid shuffle!")
 
 spearman = Character.create(role: "spearman", base_stats: {hp: 50, mp: 25, str: 50, dex: 25, int: 0, cri: 1,spd: 25, def: 25})
-crusader = Character.create(role: "crusader", base_stats: {hp: 100, mp: 50, str: 100, dex: 50, int: 25, cri: 10, spd: 50, def: 50})
-hero = Character.create(role: "hero", base_stats: {hp: 200, mp: 100, str: 200, dex: 100, int: 50, cri: 20, spd: 100, def: 100})
+crusader = Character.create(role: "crusader", base_stats: {hp: 100, mp: 50, str: 100, dex: 50, int: 25, cri: 6, spd: 50, def: 50})
+hero = Character.create(role: "hero", base_stats: {hp: 200, mp: 100, str: 200, dex: 100, int: 50, cri: 11, spd: 100, def: 100})
 hunter = Character.create(role: "hunter", base_stats: {hp: 50, mp: 25, str: 0, dex: 50, int: 25, cri: 1,spd: 25, def: 25})
 crossbowman = Character.create(role: "crossbowman", base_stats: {hp: 100, mp: 50, str: 25, dex: 100, int: 50, cri: 10,spd: 50, def: 50})
 robinhood = Character.create(role: "robinhood", base_stats: {hp: 200, mp: 100, str: 50, dex: 200, int: 100, cri: 20,spd: 100, def: 100})
@@ -238,5 +238,6 @@ Experience.create(level: 27, exp: 9730)
 Experience.create(level: 28, exp: 10824)
 Experience.create(level: 29, exp: 12031)
 Experience.create(level: 30, exp: 13363)
+Experience.create(level: 31, exp: 2147483647)
 
 puts "seeding done"
