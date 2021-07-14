@@ -6,5 +6,5 @@ class UserCharacter < ApplicationRecord
   has_many :inventory_items, through: :inventory
   serialize :stats
 
-  validates :name, presence: true, uniqueness: { case_sensitive: false }, length: {minimum: 5}
+  validates :name, presence: true, uniqueness: { case_sensitive: false }, length: {minimum: 5, maximum: 8}
 end

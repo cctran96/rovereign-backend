@@ -13,8 +13,6 @@ class Api::V1::UserCharactersController < ApplicationController
         user_character = UserCharacter.new(data)
         if user_character.save
             inv = Inventory.create(user_character: user_character)
-            skill = Skill.all.select{|s| s.character.role == params[:role]}.first
-            UserCharacterSkill.create(user_character: user_character, skill: skill)
             render json: {character: UserCharacterSerializer.new(user_character)}, status: :accepted
         else
             render json: {errors: user_character.errors}, status: :unprocessable_entity
