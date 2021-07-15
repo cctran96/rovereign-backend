@@ -1,6 +1,6 @@
 class Api::V1::UserCharactersController < ApplicationController
 
-    before_action :set_user_character, only: [:update, :destroy]
+    before_action :set_user_character, only: [:update, :destroy, :upgrade]
 
     def create
         character = Character.find_by(role: params[:role])
@@ -32,6 +32,16 @@ class Api::V1::UserCharactersController < ApplicationController
     def destroy
         @char.destroy
         render json: {character: @char}, status: :accepted
+    end
+
+    def upgrade
+        character = Character.find_by(role: params[:character])
+        new_params = {character: character, stats: params[:stats], gold: params[:gold]}
+        if @char.update(new_params)
+            render json: {role: @char.character.role, gold: @char.gold, stats: @char.stats}, status: :accepted
+        else
+            render json: {errors: @char.errors}, status: :unprocessable_entity
+        end
     end
 
     private

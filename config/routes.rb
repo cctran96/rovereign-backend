@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :maps
       resources :monsters, only: [:index]
       resources :drops
+      post '/upgrade', to: 'user_characters#upgrade'
       post '/login', to: 'authentication#login'
       get '/login', to: 'authentication#user'
     end
