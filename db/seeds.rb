@@ -192,7 +192,7 @@ guillotine = Skill.create(name: "guillotine", effect: {mp: 65, attack: {damage: 
 hyper_charge = Skill.create(name: "hyper_charge", effect: {mp: 75, attack: {damage: 80}}, description: "Charges at the enemy at the speed of sound, dealing countless slashes.", level: 29, character: spearman)
 blood_thirster = Skill.create(name: "blood_thirster", effect: {mp: 100, attack: {damage: 100}}, description: "Executes the enemy through the use of an ancient technique that uses the opponent's own blood.", level: 30, character: spearman)
 
-sneak = Skill.create(name: "sneak", effect: {mp: 7, attack: {damage: 10}}, description: "The player has a 20% chance of sneaking in a hit on the enemey before the start of the battle.", level: 1, character: hunter)
+sneak = Skill.create(name: "sneak", effect: {mp: 7, attack: {damage: 10}}, description: "The player sneaks behind the enemy and deal a surprise hit.", level: 1, character: hunter)
 range_buff = Skill.create(name: "range_buff", effect: {mp: 15, buff: {dex: 10}}, description: "Increases the player's dexterity by 10%.", level: 2, character: hunter)
 crybaby = Skill.create(name: "crybaby", effect: {mp: 10, debuff: {spd: 50}}, description: "Pretend to cry, dropping the enemy's guard and lowering their speed by 50%.", level: 3, character: hunter)
 holy_shot = Skill.create(name: "holy_shot", effect: {mp: 12, attack: {damage: 20}}, description: "Shoot a ball of spiritual energy towards the enemy.", level: 5, character: hunter)
